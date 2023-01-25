@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en-us
+{% load static %}
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://  maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Courgette|Open+Sans&display=swap" rel="stylesheet">  <link rel="stylesheet" href="{% static "/simplestore/css/basic.css"%}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="{%static "css/index.css"%}">
+  <title>demo </title>
+
+
+</head>
+<body>
+  <div class="topnav">
+  <a class="active" href="#home">Home</a>
+  <a href="news/">News</a>
+  <a href="contact/">Contact</a>
+  <a href="order/">order now </a>
+  <a href="feedback/">feedback </a>
+  <ul class= "nav navbar-nav navbar-right">
+    <li><a class="navbar-brand" href="/hello/cart/">cart : <b> {{cart_size}} items </b> </a></li>
+</div>
+
+<div style="padding-left:16px">
+</ul>
+
+
+</div>
+
+
+
+
+
+<span style="color:blue">
+  <h1> ALL IN ONE STORE </h1>
+  <h1>A PLACE TO SHOP AT AFFORDABLE RATE </h1>
+</span>
+
+  {%for Products in store_item%}
+
+  <div class="col-md-4 well" style="text-align=center">
+  <h1>{{Products.name}}</h1>
+  <img src= "{{Products.imglink}}" alt="error" width="180px" height="180px"></img>
+  <h1>{{Products.description}}</h1>
+  <h1>{{Products.price}} </h1>
+
+  <form method = "post">
+  {% csrf_token %}
+  <input type="submit" value="add to cart" class = "btn btn-success">
+  <input type="text" name="obj_id" value={{Products.id}}>
+  <input type="text" name="obj_ids" value={{Products.price}}>
+</form>
+</div>
+
+
+  {% endfor %}
+
+
+</body>
+</html>
