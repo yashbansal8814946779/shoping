@@ -1,34 +1,66 @@
-<!doctype html>
-<html lang="en-us">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>demo</title>
+	<script src= "http://code.jquery.com/jquery-2.1.1.js"> </script>
+	<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-  <h1>Hello friends your ordered items are  </h1>
+		<nav class = "navbar navbar-default navbar-fixed-top" role ="navigation">
+<h1>ALL IN ONE STORE </h1>
+		<ul class = "nav navbar-nav navbar-right">
+<li><h2><a href="/hello/">Home page  </a></h2></li>
 
 
- {% for items in cart_items %}
+		</ul>
+	</nav>
+	<br>
+	<br>
+	<div class = "page-header" style="text-align:center">
 
+		<h2>Order details <br> <br> <small>The place to shop</small></h2>
+	</div>
+	<style type = "text/css">
+	.centerdv
+	{
+			width: 45%;
+			margin-left: auto;
+			margin-right: auto;
+			text-align: center;
+	}
+	.imgscal
+	{
+		max-width:64;
+		max-height:64;
 
- <h1> {{items.name}} &  price is : {{items.price}} <br> </h1>
+	}
 
+	</style>
+	<div class = "container centerdv well ">
+			<div>
+			  		<h3>Total Price: <br> <br><span class="label label-success">{{price}}</span></h3>
+			</div>
+			<br>
+			{% for item in cart_items%}
 
-
-
-
- {%endfor%}
- <h1>for final confirmation please fill the ordered items and following details </h1>
- <form method ="post">
-<h1>   {{form.as_p}} </h1>
-   {% csrf_token %}
-<input type="submit" name="" value="click to order ">
- </form>
-
-
-
-
+			<div class="media">
+			<a class="pull-left" href="#">
+			    <img class="media-object imgscal" src={{item.imglink}} alt="..."/>
+			  </a>
+			  <div class="media-body">
+			    <h4 class="media-heading">{{item.name}}</h4>
+			    {{item.description}}
+			    <span class="badge pull-right">{{item.price}}</span>
+			  </div>
+			  <form method = "post" action="remove/">
+			  	{% csrf_token %}
+					{{form.as_p}}
+			  	<input type="hidden" name="obj_id1" value={{item.id}} />
+			  <input type="submit" value = "Remove" class = "btn btn-danger pull-right">
+			</form>
+			</div>
+			{% endfor %}
+			<button class = "btn btn-primary btn-lg" onclick = "window.location = '/checkout';">Checkout</button>
+			
+	</div>
 </body>
 </html>

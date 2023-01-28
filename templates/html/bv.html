@@ -5,13 +5,18 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="{%static "css/bv.css"%}">
   <title>demo </title>
 </head>
 <body>
-  <h1>Hello friends </h1>
+  <h1>Hello friends to order the item that is not display on our website </h1>
+  <h1>Please fill the following details </h1>
   <form method = "post">
-    {{form.as_p}}
+  <h1>  {{form.as_p}} </h1>
     {% csrf_token %}
-    <<input type="submit" name="" value="order">
+
+
+
+    <input type="submit" name="" value="order">
 </body>
 </html>

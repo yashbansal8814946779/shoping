@@ -22,10 +22,10 @@
 <body>
   <div class="topnav">
   <a class="active" href="#home">Home</a>
-  <a href="news/">News</a>
+
   <a href="contact/">Contact</a>
   <a href="order/">order now </a>
-  <a href="feedback/">feedback </a>
+  
   <ul class= "nav navbar-nav navbar-right">
     <li><a class="navbar-brand" href="/hello/cart/">cart : <b> {{cart_size}} items </b> </a></li>
 </div>
@@ -56,8 +56,8 @@
   <form method = "post">
   {% csrf_token %}
   <input type="submit" value="add to cart" class = "btn btn-success">
-  <input type="text" name="obj_id" value={{Products.id}}>
-  <input type="text" name="obj_ids" value={{Products.price}}>
+  <input type="hidden" name="obj_id" value={{Products.id}}>
+  <input type="hidden" name="obj_ids" value={{Products.price}}>
 </form>
 </div>
 

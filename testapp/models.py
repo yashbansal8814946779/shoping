@@ -19,3 +19,19 @@ class checkout(models.Model):
     ordered_item=models.CharField(max_length=500)
     address=models.CharField(max_length=500)
     contact_no=models.CharField(max_length=200)
+
+class Order12(models.Model):
+    firstname = models.CharField(max_length=400)
+    lastname = models.CharField(max_length=400)
+    address = models.CharField(max_length=400)
+    city = models.CharField(max_length=400)
+    payment_method = models.CharField(max_length=400)
+    payment_data = models.CharField(max_length=400)
+    fulfilled = models.BooleanField()
+    items = models.TextField()
+class Order123(models.Model):
+    items = models.TextField()
+class feedback(models.Model):
+    fname=models.CharField(max_length=200)
+    lname=models.CharField(max_length=200)
+    message=models.TextField()
